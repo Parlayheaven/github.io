@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parlay Calculator</title>
+    <title>Today's Picks</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Parlay Calculator</h1>
+        <h1>Today's Picks</h1>
         <p>Select the games, and the odds will automatically populate:</p>
 
         <form id="parlayForm">
@@ -111,14 +111,16 @@
             <label for="betAmount">Bet Amount (€):</label>
             <input type="number" id="betAmount" step="0.01" required><br>
 
-            <button type="button" onclick="calculateParlay()">Calculate Parlay</button>
+            <button type="button" onclick="calculateParlay()">Calculate Payout</button>
         </form>
 
         <div id="result">
-            <h2>Parlay Odds and Payout</h2>
+            <h2>Odds and Payout</h2>
             <p id="parlayOdds">Combined Odds: </p>
             <p id="payout">Potential Payout: </p>
         </div>
+
+        <p>Join our community: <a href="https://discord.gg/Kfjt262u" target="_blank">Discord Link</a></p>
     </div>
 
     <script src="script.js"></script>
