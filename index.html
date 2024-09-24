@@ -1,161 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parlay Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-            max-width: 600px;
-            margin: auto;
-        }
-        h1 {
-            text-align: center;
-        }
-        select {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #e9ecef;
-            border: 1px solid #ced4da;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parlay Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #e9ecef;
+      border: 1px solid #ced4da;
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>Parlay Odds Calculator</h1>
-<form id="parlayForm">
-    <label for="game1">Select Game 1:</label>
-    <select id="game1" onchange="updateOdds('game1', 'odds1')">
-        <option value="">Select a game</option>
-        <option value="1.23">🇫🇮 Ilves vs KuPS: Over 1.5 total goals</option>
-        <option value="1.43">🇳🇴 Vålerenga vs Aalesund: Over 2.5 total goals</option>
-        <option value="1.69">🇩🇪 VfB Stuttgart II vs Bielefeld: Over 2.5 total goals</option>
-        <option value="1.33">🇫🇷 Metz vs Martigues: Over 1.5 total goals</option>
-        <option value="1.22">🇬🇧 AFC Fylde vs Tamworth: Over 1.5 total goals</option>
-        <option value="1.25">🇬🇧 Wycombe vs Aston Villa: Aston Villa to win</option>
-    </select>
-    <div>Odds: <span id="odds1">0</span></div>
-
-    <label for="game2">Select Game 2:</label>
-    <select id="game2" onchange="updateOdds('game2', 'odds2')">
-        <option value="">Select a game</option>
-        <option value="1.23">🇫🇮 Ilves vs KuPS: Over 1.5 total goals</option>
-        <option value="1.43">🇳🇴 Vålerenga vs Aalesund: Over 2.5 total goals</option>
-        <option value="1.69">🇩🇪 VfB Stuttgart II vs Bielefeld: Over 2.5 total goals</option>
-        <option value="1.33">🇫🇷 Metz vs Martigues: Over 1.5 total goals</option>
-        <option value="1.22">🇬🇧 AFC Fylde vs Tamworth: Over 1.5 total goals</option>
-        <option value="1.25">🇬🇧 Wycombe vs Aston Villa: Aston Villa to win</option>
-    </select>
-    <div>Odds: <span id="odds2">0</span></div>
-
-    <label for="game3">Select Game 3:</label>
-    <select id="game3" onchange="updateOdds('game3', 'odds3')">
-        <option value="">Select a game</option>
-        <option value="1.23">🇫🇮 Ilves vs KuPS: Over 1.5 total goals</option>
-        <option value="1.43">🇳🇴 Vålerenga vs Aalesund: Over 2.5 total goals</option>
-        <option value="1.69">🇩🇪 VfB Stuttgart II vs Bielefeld: Over 2.5 total goals</option>
-        <option value="1.33">🇫🇷 Metz vs Martigues: Over 1.5 total goals</option>
-        <option value="1.22">🇬🇧 AFC Fylde vs Tamworth: Over 1.5 total goals</option>
-        <option value="1.25">🇬🇧 Wycombe vs Aston Villa: Aston Villa to win</option>
-    </select>
-    <div>Odds: <span id="odds3">0</span></div>
-
-    <label for="game4">Select Game 4:</label>
-    <select id="game4" onchange="updateOdds('game4', 'odds4')">
-        <option value="">Select a game</option>
-        <option value="1.23">🇫🇮 Ilves vs KuPS: Over 1.5 total goals</option>
-        <option value="1.43">🇳🇴 Vålerenga vs Aalesund: Over 2.5 total goals</option>
-        <option value="1.69">🇩🇪 VfB Stuttgart II vs Bielefeld: Over 2.5 total goals</option>
-        <option value="1.33">🇫🇷 Metz vs Martigues: Over 1.5 total goals</option>
-        <option value="1.22">🇬🇧 AFC Fylde vs Tamworth: Over 1.5 total goals</option>
-        <option value="1.25">🇬🇧 Wycombe vs Aston Villa: Aston Villa to win</option>
-    </select>
-    <div>Odds: <span id="odds4">0</span></div>
-
-    <label for="game5">Select Game 5:</label>
-    <select id="game5" onchange="updateOdds('game5', 'odds5')">
-        <option value="">Select a game</option>
-        <option value="1.23">🇫🇮 Ilves vs KuPS: Over 1.5 total goals</option>
-        <option value="1.43">🇳🇴 Vålerenga vs Aalesund: Over 2.5 total goals</option>
-        <option value="1.69">🇩🇪 VfB Stuttgart II vs Bielefeld: Over 2.5 total goals</option>
-        <option value="1.33">🇫🇷 Metz vs Martigues: Over 1.5 total goals</option>
-        <option value="1.22">🇬🇧 AFC Fylde vs Tamworth: Over 1.5 total goals</option>
-        <option value="1.25">🇬🇧 Wycombe vs Aston Villa: Aston Villa to win</option>
-    </select>
-    <div>Odds: <span id="odds5">0</span></div>
-
-    <label for="game6">Select Game 6:</label>
-    <select id="game6" onchange="updateOdds('game6', 'odds6')">
-        <option value="">Select a game</option>
-        <option value="1.23">🇫🇮 Ilves vs KuPS: Over 1.5 total goals</option>
-        <option value="1.43">🇳🇴 Vålerenga vs Aalesund: Over 2.5 total goals</option>
-        <option value="1.69">🇩🇪 VfB Stuttgart II vs Bielefeld: Over 2.5 total goals</option>
-        <option value="1.33">🇫🇷 Metz vs Martigues: Over 1.5 total goals</option>
-        <option value="1.22">🇬🇧 AFC Fylde vs Tamworth: Over 1.5 total goals</option>
-        <option value="1.25">🇬🇧 Wycombe vs Aston Villa: Aston Villa to win</option>
-    </select>
-    <div>Odds: <span id="odds6">0</span></div>
-
-    <label for="game7">Select Game 7:</label>
-    <select id="game7" onchange="updateOdds('game7', 'odds7')">
-        <option value="">Select a game</option>
-        <option value="1.23">🇫🇮 Ilves vs KuPS: Over 1.5 total goals</option>
-        <option value="1.43">🇳🇴 Vålerenga vs Aalesund: Over 2.5 total goals</option>
-        <option value="1.69">🇩🇪 VfB Stuttgart II vs Bielefeld: Over 2.5 total goals</option>
-        <option value="1.33">🇫🇷 Metz vs Martigues: Over 1.5 total goals</option>
-        <option value="1.22">🇬🇧 AFC Fylde vs Tamworth: Over 1.5 total goals</option>
-        <option value="1.25">🇬🇧 Wycombe vs Aston Villa: Aston Villa to win</option>
-    </select>
-    <div>Odds: <span id="odds7">0</span></div>
-
-    <label for="game8">Select Game 8:</label>
-    <select id="game8" onchange="updateOdds('game8', 'odds8')">
-        <option value="">Select a game</option>
-        <option value="1.23">🇫🇮 Ilves vs KuPS: Over 1.5 total goals</option>
-        <option value="1.43">🇳🇴 Vålerenga vs Aalesund: Over 2.5 total goals</option>
-        <option value="1.69">🇩🇪 VfB Stuttgart II vs Bielefeld: Over 2.5 total goals</option>
-        <option value="1.33">🇫🇷 Metz vs Martigues: Over 1.5 total goals</option>
-        <option value="1.22">🇬🇧 AFC Fylde vs Tamworth: Over 1.5 total goals</option>
-        <option value="1.25">🇬🇧 Wycombe vs Aston Villa: Aston Villa to win</option>
-    </select>
-    <div>Odds: <span id="odds8">0</span></div>
-
-    <label for="betAmount">Enter Bet Amount:</label>
-    <input type="number" id="betAmount" placeholder="Enter bet amount">
-
-    <button type="button" onclick="randomizeSelections()">Randomize Selections</button>
-    <button type="button" onclick="calculateParlay()">Calculate</button>
-</form>
-
-<div class="result">
-    <h2>Results</h2>
-    <div id="parlayOdds">Combined Odds: 0.00</div>
-    <div id="payout">Potential Payout: 0.00</div>
-</div>
-
-<div style="text-align: center; margin-top: 20px;">
-    <a href="https://discord.gg/zYwbcX5M" target="_blank">Join our Discord</a>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
+  <h1>Parlay Odds Calculator</h1>
+    <form id="parlayForm">
+      <label for="betAmount">Bet Amount (€):</label>
+      <input type="number" id="betAmount" value="10" min="1" step="0.01" required>
+    
+      <div>
+        <label for="game1">Match 1:</label>
+        <select id="game1" onchange="updateOdds('game1', 'odds1')">
+                    <option value="">Select a match</option>
+                    <option value="1.25">🇩🇪 VfB Stuttgart II vs Bielefeld - Over 2.5 total goals</option>
+                    <option value="1.23">🇫🇮 Ilves vs KuPS - Over 1.5 total goals</option>
+                    <option value="1.43">🇳🇴 Vålerenga vs Aalesund - Over 2.5 total goals</option>
+                    <option value="1.33">🇫🇷 Metz vs Martigues - Over 1.5 total goals</option>
+                    <option value="1.22">🇬🇧 AFC Fylde vs Tamworth - Over 1.5 total goals</option>
+                    <option value="1.25">🇬🇧 Wycombe vs Aston Villa - Aston Villa win - Over 1 goal</option>
+                    <option value="1.42">🇬🇧 Walsall vs Leicester - Leicester win</option>
+                    <option value="1.33">🇪🇸 Real Madrid vs Alaves - Real Madrid win - Over 1 goal</option>
+                    <option value="1.50">🇮🇹 Atalanta vs Como - Atalanta win</option>
+                    <option value="1.60">🇪🇸 Sevilla vs Valladolid - Sevilla win</option>
+                </select>
+        <span id="odds1">0</span>
+      </div>
+    
+      <div>
+        <label for="game2">Match 2:</label>
+        <select id="game2" onchange="updateOdds('game2', 'odds2')">
+                    <option value="">Select a match</option>
+                    <option value="1.25">🇩🇪 VfB Stuttgart II vs Bielefeld - Over 2.5 total goals</option>
+                    <option value="1.23">🇫🇮 Ilves vs KuPS - Over 1.5 total goals</option>
+                    <option value="1.43">🇳🇴 Vålerenga vs Aalesund - Over 2.5 total goals</option>
+                    <option value="1.33">🇫🇷 Metz vs Martigues - Over 1.5 total goals</option>
+                    <option value="1.22">🇬🇧 AFC Fylde vs Tamworth - Over 1.5 total goals</option>
+                    <option value="1.25">🇬🇧 Wycombe vs Aston Villa - Aston Villa win - Over 1 goal</option>
+                    <option value="1.42">🇬🇧 Walsall vs Leicester - Leicester win</option>
+                    <option value="1.33">🇪🇸 Real Madrid vs Alaves - Real Madrid win - Over 1 goal</option>
+                    <option value="1.50">🇮🇹 Atalanta vs Como - Atalanta win</option>
+                    <option value="1.60">🇪🇸 Sevilla vs Valladolid - Sevilla win</option>
+                </select>
+        <span id="odds2">0</span>
+      </div>
+    
+      <div>
+        <label for="game3">Match 3:</label>
+        <select id="game3" onchange="updateOdds('game3', 'odds3')">
+                    <option value="">Select a match</option>
+                    <option value="1.25">🇩🇪 VfB Stuttgart II vs Bielefeld - Over 2.5 total goals</option>
+                    <option value="1.23">🇫🇮 Ilves vs KuPS - Over 1.5 total goals</option>
+                    <option value="1.43">🇳🇴 Vålerenga vs Aalesund - Over 2.5 total goals</option>
+                    <option value="1.33">🇫🇷 Metz vs Martigues - Over 1.5 total goals</option>
+                    <option value="1.22">🇬🇧 AFC Fylde vs Tamworth - Over 1.5 total goals</option>
+                    <option value="1.25">🇬🇧 Wycombe vs Aston Villa - Aston Villa win - Over 1 goal</option>
+                    <option value="1.42">🇬🇧 Walsall vs Leicester - Leicester win</option>
+                    <option value="1.33">🇪🇸 Real Madrid vs Alaves - Real Madrid win - Over 1 goal</option>
+                    <option value="1.50">🇮🇹 Atalanta vs Como - Atalanta win</option>
+                    <option value="1.60">🇪🇸 Sevilla vs Valladolid - Sevilla win</option>
+                </select>
+        <span id="odds3">0</span>
+      </div>
+    
+      <div>
+        <label for="game4">Match 4:</label>
+        <select id="game4" onchange="updateOdds('game4', 'odds4')">
+                    <option value="">Select a match</option>
+                    <option value="1.25">🇩🇪 VfB Stuttgart II vs Bielefeld - Over 2.5 total goals</option>
+                    <option value="1.23">🇫🇮 Ilves vs KuPS - Over 1.5 total goals</option>
+                    <option value="1.43">🇳🇴 Vålerenga vs Aalesund - Over 2.5 total goals</option>
+                    <option value="1.33">🇫🇷 Metz vs Martigues - Over 1.5 total goals</option>
+                    <option value="1.22">🇬🇧 AFC Fylde vs Tamworth - Over 1.5 total goals</option>
+                    <option value="1.25">🇬🇧 Wycombe vs Aston Villa - Aston Villa win - Over 1 goal</option>
+                    <option value="1.42">🇬🇧 Walsall vs Leicester - Leicester win</option>
+                    <option value="1.33">🇪🇸 Real Madrid vs Alaves - Real Madrid win - Over 1 goal</option>
+                    <option value="1.50">🇮🇹 Atalanta vs Como - Atalanta win</option>
+                    <option value="1.60">🇪🇸 Sevilla vs Valladolid - Sevilla win</option>
+                </select>
+        <span id="odds4">0</span>
+      </div>
+    
+      <div>
+        <label for="game5">Match 5:</label>
+        <select id="game5" onchange="updateOdds('game5', 'odds5')">
+                    <option value="">Select a match</option>
+                    <option value="1.25">🇩🇪 VfB Stuttgart II vs Bielefeld - Over 2.5 total goals</option>
+                    <option value="1.23">🇫🇮 Ilves vs KuPS - Over 1.5 total goals</option>
+                    <option value="1.43">🇳🇴 Vålerenga vs Aalesund - Over 2.5 total goals</option>
+                    <option value="1.33">🇫🇷 Metz vs Martigues - Over 1.5 total goals</option>
+                    <option value="1.22">🇬🇧 AFC Fylde vs Tamworth - Over 1.5 total goals</option>
+                    <option value="1.25">🇬🇧 Wycombe vs Aston Villa - Aston Villa win - Over 1 goal</option>
+                    <option value="1.42">🇬🇧 Walsall vs Leicester - Leicester win</option>
+                    <option value="1.33">🇪🇸 Real Madrid vs Alaves - Real Madrid win - Over 1 goal</option>
+                    <option value="1.50">🇮🇹 Atalanta vs Como - Atalanta win</option>
+                    <option value="1.60">🇪🇸 Sevilla vs Valladolid - Sevilla win</option>
+                </select>
+        <span id="odds5">0</span>
+      </div>
+    
+      <div>
+        <label for="game6">Match 6:</label>
+        <select id="game6" onchange="updateOdds('game6', 'odds6')">
+                    <option value="">Select a match</option>
+                    <option value="1.25">🇩🇪 VfB Stuttgart II vs Bielefeld - Over 2.5 total goals</option>
+                    <option value="1.23">🇫🇮 Ilves vs KuPS - Over 1.5 total goals</option>
+                    <option value="1.43">🇳🇴 Vålerenga vs Aalesund - Over 2.5 total goals</option>
+                    <option value="1.33">🇫🇷 Metz vs Martigues - Over 1.5 total goals</option>
+                    <option value="1.22">🇬🇧 AFC Fylde vs Tamworth - Over 1.5 total goals</option>
+                    <option value="1.25">🇬🇧 Wycombe vs Aston Villa - Aston Villa win - Over 1 goal</option>
+                    <option value="1.42">🇬🇧 Walsall vs Leicester - Leicester win</option>
+                    <option value="1.33">🇪🇸 Real Madrid vs Alaves - Real Madrid win - Over 1 goal</option>
+                    <option value="1.50">🇮🇹 Atalanta vs Como - Atalanta win</option>
+                    <option value="1.60">🇪🇸 Sevilla vs Valladolid - Sevilla win</option>
+                </select>
+        <span id="odds6">0</span>
+      </div>
+    
+      <div>
+        <label for="game7">Match 7:</label>
+        <select id="game7" onchange="updateOdds('game7', 'odds7')">
+                    <option value="">Select a match</option>
+                    <option value="1.25">🇩🇪 VfB Stuttgart II vs Bielefeld - Over 2.5 total goals</option>
+                    <option value="1.23">🇫🇮 Ilves vs KuPS - Over 1.5 total goals</option>
+                    <option value="1.43">🇳🇴 Vålerenga vs Aalesund - Over 2.5 total goals</option>
+                    <option value="1.33">🇫🇷 Metz vs Martigues - Over 1.5 total goals</option>
+                    <option value="1.22">🇬🇧 AFC Fylde vs Tamworth - Over 1.5 total goals</option>
+                    <option value="1.25">🇬🇧 Wycombe vs Aston Villa - Aston Villa win - Over 1 goal</option>
+                    <option value="1.42">🇬🇧 Walsall vs Leicester - Leicester win</option>
+                    <option value="1.33">🇪🇸 Real Madrid vs Alaves - Real Madrid win - Over 1 goal</option>
+                    <option value="1.50">🇮🇹 Atalanta vs Como - Atalanta win</option>
+                    <option value="1.60">🇪🇸 Sevilla vs Valladolid - Sevilla win</option>
+                </select>
+        <span id="odds7">0</span>
+      </div>
+    
+      <div>
+        <label for="game8">Match 8:</label>
+        <select id="game8" onchange="updateOdds('game8', 'odds8')">
+                    <option value="">Select a match</option>
+                    <option value="1.25">🇩🇪 VfB Stuttgart II vs Bielefeld - Over 2.5 total goals</option>
+                    <option value="1.23">🇫🇮 Ilves vs KuPS - Over 1.5 total goals</option>
+                    <option value="1.43">🇳🇴 Vålerenga vs Aalesund - Over 2.5 total goals</option>
+                    <option value="1.33">🇫🇷 Metz vs Martigues - Over 1.5 total goals</option>
+                    <option value="1.22">🇬🇧 AFC Fylde vs Tamworth - Over 1.5 total goals</option>
+                    <option value="1.25">🇬🇧 Wycombe vs Aston Villa - Aston Villa win - Over 1 goal</option>
+                    <option value="1.42">🇬🇧 Walsall vs Leicester - Leicester win</option>
+                    <option value="1.33">🇪🇸 Real Madrid vs Alaves - Real Madrid win - Over 1 goal</option>
+                    <option value="1.50">🇮🇹 Atalanta vs Como - Atalanta win</option>
+                    <option value="1.60">🇪🇸 Sevilla vs Valladolid - Sevilla win</option>
+                </select>
+        <span id="odds8">0</span>
+      </div>
+    
+      <button type="button" onclick="randomizeSelections()">Randomize Selections</button>
+      <button type="button" onclick="calculateParlay()">Calculate Odds and Payout</button>
+    
+      <div id="parlayOdds">Combined Odds: 0.00</div>
+      <div id="payout">Potential Payout: €0.00</div>
+    </form>
+    
+    <a href="https://discord.gg/zYwbcX5M">Join our Discord!</a>
+    
+    <script src="script.js"></script> <!-- Include your JavaScript file -->
+    </body>
+    
+    </html>
