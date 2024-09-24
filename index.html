@@ -50,6 +50,13 @@
 
   <h1>Parlay Odds Calculator</h1>
   <form id="parlayForm">
+
+    <label for="betAmount">Enter Bet Amount (€):</label>
+    <input type="number" id="betAmount" placeholder="Enter bet amount">
+
+    <button type="button" onclick="randomizeSelections()">Randomize Selections</button>
+    <button type="button" onclick="calculateParlay()">Calculate</button>
+
     <label for="game1">Select Game 1:</label>
     <select id="game1" onchange="updateOdds('game1', 'odds1')">
         <option value="">Select a game</option>
@@ -130,11 +137,6 @@
     </select>
     <div>Odds: <span id="odds8">0</span></div>
 
-    <label for="betAmount">Enter Bet Amount (€):</label>
-    <input type="number" id="betAmount" placeholder="Enter bet amount">
-
-    <button type="button" onclick="randomizeSelections()">Randomize Selections</button>
-    <button type="button" onclick="calculateParlay()">Calculate</button>
   </form>
 
   <div class="result">
