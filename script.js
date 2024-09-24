@@ -52,7 +52,7 @@ function calculateParlay() {
 
     // Display the results
     document.getElementById("parlayOdds").innerText = numGamesSelected > 0 ? `Combined Odds: ${parlayOdds.toFixed(2)}` : 'Combined Odds: 0.00';
-    document.getElementById("payout").innerText = numGamesSelected > 0 ? `Potential Payout: €${potentialPayout}` : 'Potential Payout: 0.00';
+    document.getElementById("payout").innerText = numGamesSelected > 0 ? `Potential Payout: ${potentialPayout}` : 'Potential Payout: 0.00';
 }
 
 // Function to randomize match selections with a random number of games selected
