@@ -263,38 +263,6 @@
     <a href="https://discord.gg/zYwbcX5M" target="_blank">Join our Discord</a>
   </div>
 
-  <script>
-    function updateOdds(gameSelectId, oddsId) {
-            const select = document.getElementById(gameSelectId);
-            const odds = select.options[select.selectedIndex].value;
-            document.getElementById(oddsId).innerText = odds || '0';
-        }
-
-        function calculateParlay() {
-            let totalOdds = 1;
-            for (let i = 1; i <= 8; i++) {
-                const odds = parseFloat(document.getElementById(`odds${i}`).innerText);
-                if (odds) {
-                    totalOdds *= odds;
-                }
-            }
-            document.getElementById('parlayOdds').innerText = `Combined Odds: ${totalOdds.toFixed(2)}`;
-
-            const betAmount = parseFloat(document.getElementById('betAmount').value) || 0;
-            const potentialPayout = (totalOdds * betAmount).toFixed(2);
-            document.getElementById('payout').innerText = `Potential Payout: €${potentialPayout}`;
-        }
-
-        function randomizeSelections() {
-            for (let i = 1; i <= 8; i++) {
-                const select = document.getElementById(`game${i}`);
-                const randomIndex = Math.floor(Math.random() * (select.options.length - 1)) + 1; // Exclude first option
-                select.selectedIndex = randomIndex;
-                updateOdds(`game${i}`, `odds${i}`);
-            }
-        }
-  </script>
-
 </body>
 
 </html>
