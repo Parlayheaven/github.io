@@ -1,5 +1,3 @@
-// script.js
-
 // Function to update the odds displayed for each game when selected
 function updateOdds(gameId, oddsId) {
   const selectedGame = document.getElementById(gameId);
