@@ -67,10 +67,10 @@ function randomizeSelections() {
   // Shuffle the available games array
   const shuffledGames = shuffleArray(availableGames);
 
-  // Randomly choose how many games to select (between 2 and the total available games)
-  const randomNumGames = Math.floor(Math.random() * (Math.min(availableGames.length, 8) - 1)) + 2;
+  // Randomly choose how many games to select (between 2 and 6)
+  const randomNumGames = Math.floor(Math.random() * 5) + 2; // Randomly pick between 2 and 6 games
 
-  // Reset all selects and then assign random unique games
+  // Reset all selects
   gameSelects.forEach(selectId => {
     const selectElement = document.getElementById(selectId);
     selectElement.value = ""; // Clear existing selection
@@ -78,18 +78,14 @@ function randomizeSelections() {
   });
 
   const selectedGames = new Set();
-  let gameCount = 0;
 
   // Select unique games from the shuffled array
-  for (let i = 0; i < shuffledGames.length && gameCount < randomNumGames; i++) {
+  for (let i = 0; i < shuffledGames.length && selectedGames.size < randomNumGames; i++) {
     const randomGame = shuffledGames[i];
-    if (!selectedGames.has(randomGame)) {
-      selectedGames.add(randomGame);
-      const selectElement = document.getElementById(gameSelects[gameCount]);
-      selectElement.value = randomGame;
-      updateOdds(gameSelects[gameCount], `odds${gameSelects.indexOf(gameSelects[gameCount]) + 1}`);
-      gameCount++;
-    }
+    selectedGames.add(randomGame);
+    const selectElement = document.getElementById(gameSelects[selectedGames.size - 1]);
+    selectElement.value = randomGame;
+    updateOdds(gameSelects[selectedGames.size - 1], `odds${selectedGames.size}`);
   }
 
   // Update available options to prevent duplicate selections after randomization
