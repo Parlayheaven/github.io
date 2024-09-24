@@ -49,14 +49,14 @@
 <body>
 
   <h1>Parlay Odds Calculator</h1>
+
+  <div class="result">
+    <h2>Results</h2>
+    <div id="parlayOdds">Combined Odds: 0.00</div>
+    <div id="payout">Potential Payout: €0.00</div>
+  </div>
+
   <form id="parlayForm">
-
-    <label for="betAmount">Enter Bet Amount (€):</label>
-    <input type="number" id="betAmount" placeholder="Enter bet amount">
-
-    <button type="button" onclick="randomizeSelections()">Randomize Selections</button>
-    <button type="button" onclick="calculateParlay()">Calculate</button>
-
     <label for="game1">Select Game 1:</label>
     <select id="game1" onchange="updateOdds('game1', 'odds1')">
         <option value="">Select a game</option>
@@ -137,13 +137,12 @@
     </select>
     <div>Odds: <span id="odds8">0</span></div>
 
-  </form>
+    <label for="betAmount">Enter Bet Amount (€):</label>
+    <input type="number" id="betAmount" placeholder="Enter bet amount">
 
-  <div class="result">
-    <h2>Results</h2>
-    <div id="parlayOdds">Combined Odds: 0.00</div>
-    <div id="payout">Potential Payout: €0.00</div>
-  </div>
+    <button type="button" onclick="randomizeSelections()">Randomize Selections</button>
+    <button type="button" onclick="calculateParlay()">Calculate</button>
+  </form>
 
   <div style="text-align: center; margin-top: 20px;">
     <a href="https://discord.gg/zYwbcX5M" target="_blank">Join our Discord</a>
