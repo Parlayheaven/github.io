@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parlay Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-            max-width: 600px;
-            margin: auto;
-        }
-        h1 {
-            text-align: center;
-        }
-        select {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #e9ecef;
-            border: 1px solid #ced4da;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parlay Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #e9ecef;
+      border: 1px solid #ced4da;
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>Parlay Odds Calculator</h1>
-<form id="parlayForm">
+  <h1>Parlay Odds Calculator</h1>
+  <form id="parlayForm">
     <label for="game1">Select Game 1:</label>
     <select id="game1" onchange="updateOdds('game1', 'odds1')">
         <option value="">Select a game</option>
@@ -140,21 +147,23 @@
     <div>Odds: <span id="odds8">0</span></div>
 
     <label for="betAmount">Enter Bet Amount (€):</label>
-    <input type="number" id="betAmount" placeholder="Enter bet amount" oninput="calculateParlay()">
+    <input type="number" id="betAmount" placeholder="Enter bet amount">
 
     <button type="button" onclick="randomizeSelections()">Randomize Selections</button>
-</form>
+    <button type="button" onclick="calculateParlay()">Calculate</button>
+  </form>
 
-<div class="result">
+  <div class="result">
     <h2>Results</h2>
     <div id="parlayOdds">Combined Odds: 0.00</div>
     <div id="payout">Potential Payout: €0.00</div>
-</div>
+  </div>
 
-<div style="text-align: center; margin-top: 20px;">
+  <div style="text-align: center; margin-top: 20px;">
     <a href="https://discord.gg/zYwbcX5M" target="_blank">Join our Discord</a>
-</div>
+  </div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
