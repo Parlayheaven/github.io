@@ -2,376 +2,268 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parlay Odds Calculator</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parlay Odds Calculator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
 
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
 
-        label {
-            font-weight: bold;
-            margin-top: 10px;
-            color: #555;
-        }
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      color: #555;
+    }
 
-        .game-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .game-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        select,
-        input[type="number"] {
-            width: 70%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+    select,
+    input[type="number"] {
+      width: 70%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-        .odds {
-            width: 25%;
-            text-align: center;
-            font-size: 18px;
-            color: #555;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #e9ecef;
-        }
+    .odds {
+      width: 25%;
+      text-align: center;
+      font-size: 18px;
+      color: #555;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #e9ecef;
+    }
 
-        select:focus,
-        input[type="number"]:focus {
-            border-color: #007BFF;
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
+    select:focus,
+    input[type="number"]:focus {
+      border-color: #007BFF;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
 
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-        }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
 
-        button:hover {
-            background-color: #0056b3;
-        }
+    button:hover {
+      background-color: #0056b3;
+    }
 
-        .result {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #e9ecef;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e9ecef;
+      border: 1px solid #ced4da;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-        .result h2 {
-            margin: 0 0 10px 0;
-            color: #333;
-        }
+    .result h2 {
+      margin: 0 0 10px 0;
+      color: #333;
+    }
 
-        .result div {
-            font-size: 18px;
-            color: #555;
-        }
+    .result div {
+      font-size: 18px;
+      color: #555;
+    }
 
-        .discord-link {
-            text-align: center;
-            margin-top: 20px;
-        }
+    .discord-link {
+      text-align: center;
+      margin-top: 20px;
+    }
 
-        .discord-link a {
-            color: #007BFF;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .discord-link a {
+      color: #007BFF;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-        .discord-link a:hover {
-            text-decoration: underline;
-        }
+    .discord-link a:hover {
+      text-decoration: underline;
+    }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
 
-            h1 {
-                font-size: 24px;
-            }
+      h1 {
+        font-size: 24px;
+      }
 
-            button {
-                font-size: 14px;
-            }
-        }
-    </style>
+      button {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <h1>Parlay Odds Calculator</h1>
-    <form id="parlayForm">
-        <div class="game-container">
-            <div>
-                <label for="game1">Select Game 1:</label>
-                <select id="game1" onchange="updateOdds('game1', 'odds1')">
+  <h1>Parlay Odds Calculator</h1>
+  <form id="parlayForm">
+    <div class="game-container">
+      <div>
+        <label for="game1">Select Game 1:</label>
+        <select id="game1" onchange="updateOdds('game1', 'odds1')">
                     <option value="">Select a game</option>
                     <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
                     <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
                     <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
                     <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
                 </select>
-            </div>
-            <div class="odds" id="odds1">0</div>
-        </div>
-
-        <div class="game-container">
-            <div>
-                <label for="game2">Select Game 2:</label>
-                <select id="game2" onchange="updateOdds('game2', 'odds2')">
-                    <option value="">Select a game</option>
-                    <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
-                    <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
-                    <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
-                    <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
-                </select>
-            </div>
-            <div class="odds" id="odds2">0</div>
-        </div>
-
-        <div class="game-container">
-            <div>
-                <label for="game3">Select Game 3:</label>
-                <select id="game3" onchange="updateOdds('game3', 'odds3')">
-                    <option value="">Select a game</option>
-                    <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
-                    <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
-                    <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
-                    <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
-                </select>
-            </div>
-            <div class="odds" id="odds3">0</div>
-        </div>
-
-        <div class="game-container">
-            <div>
-                <label for="game4">Select Game 4:</label>
-                <select id="game4" onchange="updateOdds('game4', 'odds4')">
-                    <option value="">Select a game</option>
-                    <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
-                    <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
-                    <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
-                    <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
-                </select>
-            </div>
-            <div class="odds" id="odds4">0</div>
-        </div>
-
-        <div class="game-container">
-            <div>
-                <label for="game5">Select Game 5:</label>
-                <select id="game5" onchange="updateOdds('game5', 'odds5')">
-                    <option value="">Select a game</option>
-                    <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
-                    <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
-                    <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
-                    <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
-                </select>
-            </div>
-            <div class="odds" id="odds5">0</div>
-        </div>
-
-        <div class="game-container">
-            <div>
-                <label for="game6">Select Game 6:</label>
-                <select id="game6" onchange="updateOdds('game6', 'odds6')">
-                    <option value="">Select a game</option>
-                    <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
-                    <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
-                    <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
-                    <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
-                </select>
-            </div>
-            <div class="odds" id="odds6">0</div>
-        </div>
-
-        <div class="game-container">
-            <div>
-                <label for="game7">Select Game 7:</label>
-                <select id="game7" onchange="updateOdds('game7', 'odds7')">
-                    <option value="">Select a game</option>
-                    <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
-                    <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
-                    <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
-                    <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
-                </select>
-            </div>
-            <div class="odds" id="odds7">0</div>
-        </div>
-
-        <div class="game-container">
-            <div>
-                <label for="game8">Select Game 8:</label>
-                <select id="game8" onchange="updateOdds('game8', 'odds8')">
-                    <option value="">Select a game</option>
-                    <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
-                    <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
-                    <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
-                    <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
-                </select>
-            </div>
-            <div class="odds" id="odds8">0</div>
-        </div>
-
-        <label for="betAmount">Enter Bet Amount (€):</label>
-        <input type="number" id="betAmount" value="100" placeholder="Enter bet amount">
-
-        <button type="button" onclick="randomizeSelections()">Randomize Selections</button>
-        <button type="button" onclick="calculateParlay()">Calculate</button>
-    </form>
-
-    <div class="result">
-        <h2>Results</h2>
-        <div id="parlayOdds">Combined Odds: 0.00</div>
-        <div id="payout">Potential Payout: €0.00</div>
+      </div>
+      <div class="odds" id="odds1">0</div>
     </div>
 
-    <div class="discord-link">
-        <a href="https://discord.gg/zYwbcX5M" target="_blank">Join our Discord</a>
+    <div class="game-container">
+      <div>
+        <label for="game2">Select Game 2:</label>
+        <select id="game2" onchange="updateOdds('game2', 'odds2')">
+                    <option value="">Select a game</option>
+                    <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
+                    <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
+                    <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
+                    <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
+                </select>
+      </div>
+      <div class="odds" id="odds2">0</div>
     </div>
 
-    <script>
-        // Function to update the odds displayed for each game when selected
-        function updateOdds(gameId, oddsId) {
-            const selectedGame = document.getElementById(gameId);
-            const oddsValue = selectedGame.value;
-            document.getElementById(oddsId).innerText = oddsValue || "0";
-            calculateParlay(); // Automatically calculate odds and payout after updating odds
+    <div class="game-container">
+      <div>
+        <label for="game3">Select Game 3:</label>
+        <select id="game3" onchange="updateOdds('game3', 'odds3')">
+                    <option value="">Select a game</option>
+                    <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
+                    <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
+                    <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
+                    <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
+                </select>
+      </div>
+      <div class="odds" id="odds3">0</div>
+    </div>
 
-            // Update available game options to prevent duplicate selections
-            updateAvailableOptions();
-        }
+    <div class="game-container">
+      <div>
+        <label for="game4">Select Game 4:</label>
+        <select id="game4" onchange="updateOdds('game4', 'odds4')">
+                    <option value="">Select a game</option>
+                    <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
+                    <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
+                    <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
+                    <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
+                </select>
+      </div>
+      <div class="odds" id="odds4">0</div>
+    </div>
 
-        // Function to update the available options in all dropdowns based on current selections
-        function updateAvailableOptions() {
-            const gameSelects = ['game1', 'game2', 'game3', 'game4', 'game5', 'game6', 'game7', 'game8'];
-            const selectedValues = new Set();
+    <div class="game-container">
+      <div>
+        <label for="game5">Select Game 5:</label>
+        <select id="game5" onchange="updateOdds('game5', 'odds5')">
+                    <option value="">Select a game</option>
+                    <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
+                    <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
+                    <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
+                    <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
+                </select>
+      </div>
+      <div class="odds" id="odds5">0</div>
+    </div>
 
-            // Collect all selected values
-            gameSelects.forEach(selectId => {
-                const selectElement = document.getElementById(selectId);
-                if (selectElement.value) {
-                    selectedValues.add(selectElement.value);
-                }
-            });
+    <div class="game-container">
+      <div>
+        <label for="game6">Select Game 6:</label>
+        <select id="game6" onchange="updateOdds('game6', 'odds6')">
+                    <option value="">Select a game</option>
+                    <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
+                    <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
+                    <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
+                    <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
+                </select>
+      </div>
+      <div class="odds" id="odds6">0</div>
+    </div>
 
-            // Disable the options that are already selected in other dropdowns
-            gameSelects.forEach(selectId => {
-                const selectElement = document.getElementById(selectId);
-                Array.from(selectElement.options).forEach(option => {
-                    option.disabled = selectedValues.has(option.value) && selectElement.value !== option.value;
-                });
-            });
-        }
+    <div class="game-container">
+      <div>
+        <label for="game7">Select Game 7:</label>
+        <select id="game7" onchange="updateOdds('game7', 'odds7')">
+                    <option value="">Select a game</option>
+                    <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
+                    <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
+                    <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
+                    <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
+                </select>
+      </div>
+      <div class="odds" id="odds7">0</div>
+    </div>
 
-        // Function to calculate the total parlay odds and payout
-        function calculateParlay() {
-            const betAmount = parseFloat(document.getElementById("betAmount").value) || 0;
-            const gameSelects = ['game1', 'game2', 'game3', 'game4', 'game5', 'game6', 'game7', 'game8'];
-            let parlayOdds = 1;
-            let numGamesSelected = 0;
+    <div class="game-container">
+      <div>
+        <label for="game8">Select Game 8:</label>
+        <select id="game8" onchange="updateOdds('game8', 'odds8')">
+                    <option value="">Select a game</option>
+                    <option value="1.49">AZ Alkmaar vs Elfsborg: AZ Alkmaar to win</option>
+                    <option value="1.49">Manchester United vs FC Twente: Over 2.5 goals</option>
+                    <option value="1.26">Ludogorets vs Slavia Prague: Over 1.5 goals</option>
+                    <option value="1.44">Nice vs Real Sociedad: Over 1.5 goals</option>
+                </select>
+      </div>
+      <div class="odds" id="odds8">0</div>
+    </div>
 
-            // Multiply the odds of all selected games
-            gameSelects.forEach(selectId => {
-                const selectedGame = document.getElementById(selectId);
-                if (selectedGame.value) {
-                    parlayOdds *= parseFloat(selectedGame.value);
-                    numGamesSelected++;
-                }
-            });
+    <label for="betAmount">Enter Bet Amount (€):</label>
+    <input type="number" id="betAmount" value="100" placeholder="Enter bet amount">
 
-            // Calculate the payout
-            const potentialPayout = (betAmount * parlayOdds).toFixed(2);
+    <button type="button" onclick="randomizeSelections()">Randomize Selections</button>
+    <button type="button" onclick="calculateParlay()">Calculate</button>
+  </form>
 
-            // Display the results
-            document.getElementById("parlayOdds").innerText = numGamesSelected > 0 ? `Combined Odds: ${parlayOdds.toFixed(2)}` : 'Combined Odds: 0.00';
-            document.getElementById("payout").innerText = numGamesSelected > 0 ? `Potential Payout: €${potentialPayout}` : 'Potential Payout: €0.00';
-        }
+  <div class="result">
+    <h2>Results</h2>
+    <div id="parlayOdds">Combined Odds: 0.00</div>
+    <div id="payout">Potential Payout: €0.00</div>
+  </div>
 
-        // Function to randomize match selections with a random number of games selected
-        function randomizeSelections() {
-            const gameSelects = ['game1', 'game2', 'game3', 'game4', 'game5', 'game6', 'game7', 'game8'];
+  <div class="discord-link">
+    <a href="https://discord.gg/zYwbcX5M" target="_blank">Join our Discord</a>
+  </div>
 
-            // Collect all available game options
-            const availableGames = Array.from(document.querySelectorAll('select option'))
-                .filter(option => option.value !== "")
-                .map(option => option.value);
-
-            // Shuffle the available games array
-            const shuffledGames = shuffleArray(availableGames);
-
-            // Randomly choose how many games to select (between 2 and 8, but favoring fewer)
-            const randomNumGames = Math.floor(Math.random() * 7) + 2; // Randomly pick between 2 and 8 games
-
-            // Reset all selects and then assign random unique games
-            gameSelects.forEach(selectId => {
-                const selectElement = document.getElementById(selectId);
-                selectElement.value = ""; // Clear existing selection
-                document.getElementById(`odds${gameSelects.indexOf(selectId) + 1}`).innerText = "0"; // Reset odds display
-            });
-
-            const selectedGames = new Set(); // To track unique game selections
-            let gameCount = 0;
-
-            // Select unique games from the shuffled array
-            for (let i = 0; i < shuffledGames.length && gameCount < randomNumGames; i++) {
-                const randomGame = shuffledGames[i];
-                if (!selectedGames.has(randomGame)) {
-                    selectedGames.add(randomGame);
-                    const selectElement = document.getElementById(gameSelects[gameCount]);
-                    selectElement.value = randomGame;
-                    updateOdds(gameSelects[gameCount], `odds${gameSelects.indexOf(gameSelects[gameCount]) + 1}`);
-                    gameCount++;
-                }
-            }
-
-            // Update available options to prevent duplicate selections after randomization
-            updateAvailableOptions();
-        }
-
-        // Helper function to shuffle an array
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-    </script>
-
+  <script src="script.js"></script>
 </body>
 
 </html>
